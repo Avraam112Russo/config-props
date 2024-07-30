@@ -1,0 +1,36 @@
+server:
+  port: 9191
+spring:
+  application:
+    name: api-gateway-service
+  cloud:
+    gateway:
+      routes[0]:
+        id: USER-SERVICED
+        uri: lb://USER-SERVICED
+        predicates: Path=/api/user-service/**
+      routes[1]:
+        id: AUTH-SERVICE
+        uri: lb://AUTH-SERVICE
+        predicates: Path=/api/auth-service/**
+      routes[2]:
+        id: VIDEO-SERVICE
+        uri: lb://VIDEO-SERVICE
+        predicates: Path=/api/video-service/**
+
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+
+
+logging:
+  level:
+    root: info
+#  logging.level.org.springframework.cloud.gateway.route.RouteDefinitionLocator=info
+#  logging.level.org.springframework.cloud.gateway=TRACE
+
