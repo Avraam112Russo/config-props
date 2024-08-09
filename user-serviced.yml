@@ -10,7 +10,7 @@ spring:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
-        spring.json.trusted.packages: com.n1nt3nd0.social_media_app.dto # change this with your event packages
+        spring.json.trusted.packages: "*" # change this with your event packages
 
   datasource:
     url: jdbc:postgresql://localhost:5434/postgres
