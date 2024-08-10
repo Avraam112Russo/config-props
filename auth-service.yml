@@ -12,10 +12,16 @@ spring:
     #        spring.json.trusted.packages: com.n1nt3nd0.kafkaspringbootexample.event # change this with your event packages
     producer:
       ## 0 -- none / 1 -- leader / -1 -- all
-      acks: -1
       bootstrap-servers: localhost:29092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        acks: 1
+        spring:
+          json:
+            add:
+              type:
+                headers: false
   datasource:
     url: jdbc:postgresql://localhost:5434/postgres
     username: postgres
